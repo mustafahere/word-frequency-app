@@ -1,0 +1,16 @@
+{
+  "name": "process-handler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "zip": "zip -r function.zip index.js package.json package-lock.json node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "mammoth": "^1.9.1",
+    "pdf-parse": "^1.1.1"
+  }
+}
