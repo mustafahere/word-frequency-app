@@ -1,1 +1,11 @@
 .env
+/frontend/node_modules
+/frontend/dist
+/frontend/.env
+/lambdas/*/node_modules
+/lambdas/*/package-lock.json
+/lambdas/*/function.zip
+/terraform/terraform.tfstate
+/terraform/terraform.tfstate.backup
+/terraform/.terraform
+/terraform/.terraform.lock.hcl
