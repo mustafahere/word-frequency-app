@@ -1,4 +1,4 @@
-# Word Frequency Application
+## Word Frequency Application
 
 A cloud-based application that analyzes word frequencies in text files using AWS serverless architecture and React frontend.
 
@@ -124,6 +124,30 @@ To destroy all created AWS resources:
    - DynamoDB for storing analysis results
    - IAM roles and policies for security
 
-## License
+## Scalability & Security
 
-ISC License
+### Scalability
+
+This application is designed to scale efficiently both at the infrastructure and application levels:
+
+- **Serverless Architecture:** All backend logic is implemented as AWS Lambda functions, which automatically scale up or down based on incoming request volume. There are no servers to manage, and you only pay for what you use.
+- **API Gateway:** AWS API Gateway handles all HTTP(S) requests, providing built-in support for high concurrency and throttling. It can handle thousands of simultaneous connections without manual intervention.
+- **S3 Storage:** File uploads are stored in Amazon S3, which is designed for virtually unlimited storage and high throughput. S3 automatically scales to handle large numbers of files and requests.
+- **DynamoDB:** Analysis results are stored in DynamoDB, a fully managed NoSQL database that provides single-digit millisecond performance at any scale. DynamoDB automatically partitions and replicates data to meet demand.
+- **Stateless Services:** Each Lambda function is stateless, allowing AWS to run multiple instances in parallel as needed. This enables the backend to handle spikes in traffic without bottlenecks.
+- **Decoupled Components:** The frontend, backend Lambdas, and storage/database layers are loosely coupled, allowing each to scale independently.
+
+### Security
+
+Security is a core consideration throughout the stack:
+
+- **IAM Roles & Policies:** Each Lambda function is assigned a least-privilege IAM role, granting only the permissions necessary for its operation (e.g., access to specific S3 buckets or DynamoDB tables).
+- **Environment Variables:** Sensitive configuration (such as API keys and secrets) are managed via environment variables and never hardcoded in source code.
+- **API Gateway Security:** API Gateway can be configured with throttling, request validation, and (optionally) authentication mechanisms such as API keys, Cognito, or custom authorizers.
+- **S3 Bucket Policies:** S3 buckets are private by default, with access restricted to only the necessary Lambda functions. Public access is disabled unless explicitly required.
+- **Data Encryption:** Data at rest in S3 and DynamoDB is encrypted using AWS-managed keys. Data in transit is protected via HTTPS endpoints.
+- **Input Validation:** Lambda functions validate and sanitize all incoming data to prevent injection attacks and malformed requests.
+- **Dependency Management:** All dependencies are managed via `npm` and kept up to date to minimize vulnerabilities.
+- **Infrastructure as Code:** Terraform is used to provision and manage all AWS resources, ensuring consistent, auditable, and repeatable deployments.
+
+By leveraging AWS managed services and following best practices for security and scalability, this application is robust, cost-effective, and ready to handle production workloads.
