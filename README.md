@@ -1,6 +1,17 @@
+# Group: CloudComp45
+
+## Members:
+
+- **Muhammad Mustafa** (Matriculation Number: 1574689)
+- **Muhammad Nomir** (Matriculation Number: 1575008)
+
 ## Word Frequency Application
 
 A cloud-based application that analyzes word frequencies in text files using AWS serverless architecture and React frontend.
+
+### Architecture Diagram
+
+![Architecture Diagram](./architecture-diagram.png)
 
 ## Architecture Overview
 
